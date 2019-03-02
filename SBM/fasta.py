@@ -63,11 +63,12 @@ class Fasta:
         try:
             return self._fasta[_id_str]
         except KeyError:
-            print('Fuzzy matching...')
             for full_id in self._idlist:
                 if re.search(_id_str, full_id):
-                    print('Matched:', full_id)
                     return self._fasta[full_id]
+                else:
+                    print('Wrong ID:', _id_str)
+                    return ''
 
     def rmDups(self):   
         reverse_dict = {} 
