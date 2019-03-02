@@ -20,9 +20,9 @@ from sbm import *
 
 - Fasta文件：
 
-  - ```python
-    >> fa = Fasta('example/fasta.fas')   #创建Fasta对象
-    ```
+  ```python
+  >>> fa = Fasta('example/fasta.fas')   #创建Fasta对象
+  ```
 
   - 通过identifier快速得到对应的具体序列，支持不完整的identifier（但必须唯一）
 
