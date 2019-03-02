@@ -1,4 +1,7 @@
-# Simplified Bioinformatics Analysis Module
+# Simplified Bioinformatics Module
+# Thanks to Qiao Yang who helped resolving the compability 
+# problem to Apple Macbook Linux terminal
+
 import os
 import sys
 import re
