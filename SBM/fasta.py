@@ -13,7 +13,10 @@ class Fasta:
         print('Fasta reading in...')        
         self._fasta = {}
         line_count = os.popen('wc -l %s'%fasta_path).read()
-        line_num = int(line_count.split(' ')[0])
+        line_count_list = line_count.split(' ')
+        for item in line_count_list:
+            if item.isnumeric():
+                line_num = int(item)
         count = 1
         _seq = ''
         fasta_file = open(fasta_path)
