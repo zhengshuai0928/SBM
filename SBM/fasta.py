@@ -63,12 +63,14 @@ class Fasta:
         try:
             return self._fasta[_id_str]
         except KeyError:
+            found_flg = 0
             for full_id in self._idlist:
                 if re.search(_id_str, full_id):
+                    found_flg = 1
                     return self._fasta[full_id]
-                else:
-                    print('Wrong ID:', _id_str)
-                    return ''
+            if found_flg == 0:
+                print('Wrong ID:', _id_str)
+                return ''
 
     def rmDups(self):   
         reverse_dict = {} 

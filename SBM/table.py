@@ -71,6 +71,10 @@ class Table:
         COLNAMES = self.col_names
         self._data = []
         for _list in table_lines:
+            if len(_list) < self.col_num:
+                diff = self.col_num - len(_list)
+                for i in range(diff):
+                    _list.append('')
             self._data.append(Col(_list))
     
     def __getitem__(self, _index):
