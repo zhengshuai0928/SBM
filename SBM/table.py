@@ -1,6 +1,7 @@
 import gc
 import re
 import sys
+from sbm import progressBar
 
 class EmptyTable(Exception):
     def __str__(self):

@@ -71,6 +71,8 @@ class Fasta:
             if found_flg == 0:
                 print('Wrong ID:', _id_str)
                 return ''
+    def __iter__(self):
+        return iter(self.keys())
 
     def rmDups(self):   
         reverse_dict = {} 
@@ -109,6 +111,9 @@ class Fasta:
         out.close()
 
     def getseqs_gff(self, gff3_path, feature, out_path, mode='w'):
+        
+        """Extract feature sequences according to Gff3 file.
+        Note: extracted sequences will be connected together in order."""
         out = open(out_path, mode)
         gf = Gff3(gff3_path)
         for anno in gf:
