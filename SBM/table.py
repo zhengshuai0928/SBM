@@ -85,8 +85,8 @@ class Table:
             return self._data[_index]
     
     def pop(self, row_index):
-        self._data.pop(row_index)
         self.row_num -= 1
+        return self._data.pop(row_index)
 
     def toFile(self, out_path, mode='w', header=False):
         out = open(out_path, mode)

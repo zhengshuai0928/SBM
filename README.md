@@ -12,8 +12,5 @@ Linux; python 3.6
 
 **3. 使用 方式**
 
-请阅读使用手册
+请阅读使用手册-> User Manual.pdf
 
-  
-
-  
