@@ -1,3 +1,9 @@
+'''
+Simplified Bioinformatics Module (SBM)
+Version: 1.0
+Author: zhengshuaiha@163.com
+'''
+
 def progressBar(symbol, symbol_num, count, total):
     symbol_count = int(count / (total / symbol_num))
     sys.stdout.write('\r')
