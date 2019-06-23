@@ -1,6 +1,7 @@
 import gc
 import re
 import sys
+import copy
 from sbm import progressBar
 
 class EmptyTable(Exception):
@@ -48,6 +49,8 @@ class Table:
             raise EmptyTable()
         self._parse(table_lines, header)
 
+        self.roll_back = 0
+
     def _parse(self, table_lines, header):     
         # Check if header col no. equals data col no.     
         if header:
@@ -77,6 +80,8 @@ class Table:
                 for i in range(diff):
                     _list.append('')
             self._data.append(Col(_list))
+
+        self._data_backup = copy.deepcopy(self._data)
     
     def __getitem__(self, _index):
         if isinstance(_index, slice):
@@ -161,8 +166,17 @@ class Table:
             else:
                 fail_filter.append(col)
         self._data = pass_filter
+        self.roll_back = 1
         sys.stdout.write('\n')
         self.row_num = len(self._data)
+
+    def rollBack(self):
+        if self.roll_back == 0:
+            print("No filter executed! No need to roll back!")
+        else:
+            self._data = copy.deepcopy(self._data_backup)
+            self.row_num = len(self._data)
+            self.roll_back = 0
 
 class Col:
     
